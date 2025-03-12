@@ -21,7 +21,7 @@ export function addUser(user: User): string {
     user.id = id;
     user.workouts = [];
     users.set(id, user);
-    console.log(Username: ${user.name} added successfully with id: ${id}.\n);
+    console.log('Username: ${user.name} added successfully with id: ${id}.\n');
     return id;
 }
 
@@ -32,7 +32,8 @@ export function logWorkout(userId: string, workout: Workout): void {
     const user = users.get(userId)!;
     user.workouts!.push(workout);
     users.set(userId, user);
-    console.log(Workout logged successfully for user with id: ${userId}.\n);
+  console.log(`Workout logged successfully for user with id: ${userId}.\n`);
+      
 }
 
 export function getAllWorkoutsOf(userId: string): Workout[] {
@@ -49,7 +50,7 @@ export function getAllWorkoutsByType(userId: string, type: string): Workout[] {
     const workouts =  users.get(userId)!.workouts!.filter(workout => workout.type === type);
 
     if(workouts.length === 0){
-        throw new Error(Workouts of type: "${type}" not found!!!)
+        throw new Error(`Workouts of type: "${type}" not found!!!`)
     }
     return workouts;
 }
@@ -60,7 +61,7 @@ export function getUsers(): User[] {
 
 export function getUser(id: string): User | null {
     if (!users.has(id)) {
-        throw new Error(User with id ${id} not found!);
+        throw new Error(`User with id ${id} not found!`);
     }
     return users.get(id) || null;
 }
@@ -72,5 +73,5 @@ export function updateUser(id: string, updatedFields: Partial<Omit<User, 'id'>>)
     const user = users.get(id)!;
     const updatedUser = { ...user, ...updatedFields };
     users.set(id, updatedUser);
-    console.log(User with id: ${id} updated successfully.\n);
+    console.log(`User with id: ${id} updated successfully.\n`);
 }
