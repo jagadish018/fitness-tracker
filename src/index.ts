@@ -37,7 +37,7 @@ const userId4 = addUser({
 });
 
 console.log("\nAll users: \n");
-console.log(getUsers());
+console.table(getUsers());
 
 //workout logs of user 1
 logWorkout(userId1, {
@@ -109,16 +109,17 @@ logWorkout(userId3, {
   type: "cardio",
   duration: 60,
   caloriesBurned: 400,
-  date: "2025-04-20",
+    date: "2025-04-20",
+
 });
 
 console.log("\nAll workouts of Vishnu:");
-console.log(getAllWorkoutsOf(userId1));
+console.table(getAllWorkoutsOf(userId1));
 
 //userID4 is not defined which throws "User not found!" error
 try {
   console.log("\nYoga workouts of Vishnu:");
-  console.log(getAllWorkoutsByType("userId4", "yoga"));
+  console.table(getAllWorkoutsByType("userId4", "yoga"));
 } catch (error) {
   if (error instanceof Error) {
     console.error(error.message);
@@ -130,7 +131,7 @@ try {
 //now, proper userID is defined, that is userID1
 try {
   console.log("\nYoga workouts of Vishnu:");
-  console.log(getAllWorkoutsByType(userId1, "yoga"));
+  console.table(getAllWorkoutsByType(userId1, "yoga"));
 } catch (error) {
   if (error instanceof Error) {
     console.error(error.message);
@@ -141,7 +142,7 @@ try {
 
 //before partially updating user details of user 3
 console.log("\nOriginal details of Mahesh:");
-console.log(getUser(userId3));
+console.table(getUser(userId3));
 
 updateUser(userId3, {
   weight: 74,
@@ -150,4 +151,4 @@ updateUser(userId3, {
 
 //after partially updating user details of user 3
 console.log("\n==Updated details of Mahesh:===\n");
-console.log(getUser(userId3));
+console.table(getUser(userId3));

@@ -21,7 +21,7 @@ export function addUser(user: User): string {
     user.id = id;
     user.workouts = [];
     users.set(id, user);
-    console.log('Username: ${user.name} added successfully with id: ${id}.\n');
+    console.log(`Username: ${user.name} added successfully with id: ${id}.\n`);
     return id;
 }
 
